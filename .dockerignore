@@ -1,0 +1,12 @@
+node_modules
+.git
+.github
+tests
+dist
+coverage
+Dockerfile.old
+npm-debug.log
+.pnpm-store
+.vscode
+.idea
+.DS_Store
