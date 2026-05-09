@@ -1,0 +1,23 @@
+
+services:
+  stremio-server:
+    image: stremio/server:latest
+    container_name: darkflix-server
+    restart: unless-stopped
+    ports:
+      - "11470:11470"
+      - "12470:12470"
+    environment:
+      - NO_CORS=1
+    volumes:
+      - darkflix-server-data:/root/.stremio-server
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:11470/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+volumes:
+  darkflix-server-data:
+    name: darkflix-server-data
