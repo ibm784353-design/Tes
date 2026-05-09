@@ -1,6 +1,6 @@
 # Stremio Web - Railway Ready
 
-ARG NODE_VERSION=20-alpine
+ARG NODE_VERSION=22-alpine
 FROM node:${NODE_VERSION}
 
 # Setup pnpm
@@ -25,11 +25,9 @@ COPY . .
 # Build app
 RUN pnpm build
 
-# Expose Railway port
-EXPOSE 8080
-
-# Railway automatically injects PORT
+# Railway port
 ENV PORT=8080
+EXPOSE 8080
 
 # Start server
 CMD ["node", "http_server.js"]
